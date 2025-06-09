@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="pic">ảnh mặc định</p>
+<button type="button" onclick="click2()">click me thay đổi ảnh</button>
+<button type="reset" onclick="click1()">click me quay trở lại ảnh</button>
+
+
+</body>
+</html>
+<!--Hiển thị kết quả sử dụng thẻ HTML:-->
+<script>
+function click2(){
+    document.getElementById("pic").innerHTML = "Bạn đã thay đổi ảnh ";
+    // document.write('bạn đã thay đổi ảnh')
+    alert('bạn đã thay đổi ảnh')
+}
+function click1(){
+    document.getElementById("pic").innerHTML=" Ảnh cũ của bạn đã trở lại  ";
+    alert('ảnh củ của bạn')
+}
+
+
+
+</script>
