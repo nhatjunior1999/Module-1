@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--ô nhập vào -->
+<input type="number" id="nhietdoC" placeholder="nhập ° C">
+<!--nút chuyển ổi-->
+<button onclick="cover()">Chuyển đôi</button>
+<!-- chữ in ra-->
+<p id="result">Result ( độ F là  ) : </p>
+
+</body>
+</html>
+<script>
+    function cover(){
+        // lấy giá trị ô nhập vào đó là INPUT
+        let doC = document.getElementById("nhietdoC").value;
+    //     tính độ F
+        let doF = (doC * 9/5)+32;
+    //  hiển thị
+        document.getElementById("result").innerText = doF.toFixed(2) + " ° F ";
+
+    }
+
+</script>
