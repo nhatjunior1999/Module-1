@@ -1,5 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+    body{
+        margin: 20px auto;
+    }
+table{
+    background-color: #595757;
+    height: 80px;
+}
+select{
+    height: 30px;
+}
+input{
+    height: 30px;
+}
+button{
+    height: 30px;
+}
+</style>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -16,7 +34,7 @@
         <tr>
             <td> <input type="text" id="Amount"></td>
             <td>
-                <select id ="From">
+                <select id ="From" style="margin-left: 40px;">
                     <option>USD</option>
                     <option>VND</option>
                 </select>
@@ -27,36 +45,14 @@
                     <option>VND</option>
                 </select>
             </td>
-            <td> <button onclick="ChangMoney()">Convert</button></td>
+            <td>  <button  type="button" onclick="ChangMoney()">Convert</button>    </td>
         </tr>
+
+
     </table>
-<label id="Result"></label>
+<p id="Result" ></p>
 
 </form>
 </body>
 </html>
-<script>
-    function ChangMoney(){
-        let Amount = document.getElementById("Amount").value;
-        let From = document.getElementById("From").value;
-        let To = document.getElementById("To").value;
-        let Result ;
-        if (From == "USD" && To == "VND"){
-            Result = "Result: " + ( Amount * 26050) + " VND";
-        } else if (From == "VND" && To == "USD"){
-            Result = "Result : " + (Amount / 26050) + " USD";
-        } else if(From == "VND" && To == "VND"){
-            Result = "Result : " + Amount + " VND";
-        } else if(From == "USD" && To == "USD"){
-            Result = "Result : " + Amount + " USD";
-        }
-        else {
-            Result = "Error";
-        }
-        document.getElementById("Result").innerHTML = Result;
-
-    }
-
-
-
-</script>
+<script src="chuyen_doi_tien_te.js"></script>
