@@ -1,4 +1,5 @@
 let check = document.getElementById("check");
+let result = document.getElementById("result");
 check.addEventListener("click",  oncheck);
 function oncheck(){
     let input = document.getElementById("input").value;
