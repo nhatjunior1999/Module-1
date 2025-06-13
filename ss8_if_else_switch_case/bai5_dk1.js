@@ -9,7 +9,7 @@ if (tongDiem >= 0 && tongDiem <= 10) {
     } else if (tongDiem > 8) {
         alert(" bạn được học sinh giỏi" + tongDiem.toFixed(2))
     } else if (tongDiem >= 6.5) {
-        alert("học sinh trung bình khá" + " " + tongDiem.toFixed(5))
+        alert("học sinh trung bình khá" + " " + tongDiem.toFixed(2))
     } else {
         alert("học sinh kém " + tongDiem.toFixed(2))
     }
