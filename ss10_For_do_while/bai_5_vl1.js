@@ -4,7 +4,7 @@ let sum = 0;
 let nextNumber ;
 for (let i = 1 ; i <= 20 ; i++ ){
     sum += a ;
-    nextNuber = a +b ;
+    nextNumber = a +b ;
     a = b ;
     b = nextNumber
 }
