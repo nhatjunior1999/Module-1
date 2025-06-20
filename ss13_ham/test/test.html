@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="value" placeholder="nhap ma vung dien thoai">
+<button id="btn" onclick="numberPhone()">check</button>
+<p id="result"></p>
+</body>
+</html>
+<script>
+  let phoneNumber = ["+84","+81","+33","+49","+1","+91","+55"]
+  let nation = ["Vietnam","Japan","France","Germany","USA","India","Brazil"]
+  function numberPhone(){
+    let str = document.getElementById("value").value
+    let found = false;
+    for (let i = 0; i < phoneNumber.length; i++) {
+      if(str === phoneNumber[i]){
+        alert(`ma vung dien thoai quoc gia la  : ${nation[i]}`)
+        found =true
+        break
+      }
+    }
+    if(!found){
+      alert(" moi ban nhap lai :")
+    }
+
+
+  }
+
+
+
+
+</script>

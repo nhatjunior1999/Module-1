@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="value" placeholder="moi nhap vao animails">
+<button id="btn" onclick="findSound()">check</button>
+<p id="result"></p>
+</body>
+</html>
+<script>
+  let animals = ["Dog" , "Cat", "Cow", "Duck", "Lion", "Sheep"];
+  let sound = [ "Woof", "Meow", "Moo", "Quack", "Roar", "Baa"]
+function findSound(){
+    let str = document.getElementById("value").value
+   let found = false;
+  for (let i = 0; i <animals.length ; i++) {
+    if (str.toLowerCase() === animals[i].toLowerCase()){
+      document.getElementById("result").innerHTML = `result : ${sound[i]}`
+      found = true;
+      break;
+    }
+
+  }
+    if (!found){
+      document.getElementById("result").innerHTML`done have`
+    }
+}
+
+
+</script>
