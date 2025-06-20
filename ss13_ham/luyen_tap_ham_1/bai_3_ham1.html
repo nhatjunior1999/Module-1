@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function number(a, b) {
+        if (a > b) {
+            alert(`số ${a} lớn hơn số ${b}`)
+        } else if (a === b) {
+            alert(`số ${a}   bằng số   ${b}`)
+
+        } else {
+            alert(`số ${a} nhỏ hơn số  ${b}`)
+        }
+    }
+
+    let a = +prompt("moi nhap  so a ")
+    let b = +prompt("moi nhap so b")
+   if (!isNaN(a) && !isNaN(b)){
+       number(a,b);
+   }else {
+       alert("mời bạn nhập số hợp nệ ")
+   }
+
+
+</script>
+
+
+</body>
+</html>
