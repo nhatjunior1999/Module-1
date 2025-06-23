@@ -1,4 +1,4 @@
-function numberAllchange(a, b) {
+function swap(a, b) {
     let x = a
     a = b
     b = x
@@ -7,7 +7,7 @@ function numberAllchange(a, b) {
 
 let change = +prompt("mời nhập vào số a ");
 let changS = +prompt("mời nhập vào số b ");
-let result = numberAllchange(change, changS);
+let result = swap(change, changS);
 if (!isNaN(change)&& !isNaN(changS)) {
     alert(result)
 
