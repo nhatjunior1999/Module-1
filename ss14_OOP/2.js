@@ -21,4 +21,4 @@ let student = {
     },
 };
 console.log(student.scores[0])
-console.log(student.diemTrungBinh())
+console.log(student)

@@ -1,7 +1,7 @@
 let number = +prompt("moi ban nhap vao 1 so")
 
 function primeNum() {
-    for (let i = 2; i < Math.sqrt(number); i++) {
+    for (let i = 2; i <= Math.sqrt(number); i++) {
         if (number % i === 0) {
             alert(`so ${number} không phải là số nguyên tố`)
             return;

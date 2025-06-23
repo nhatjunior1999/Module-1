@@ -1,6 +1,6 @@
 function tinhGiaithua (n){
     if (n < 0 && !Number.isInteger(n)){
-        alert("vuilong khong nhap nguyen am")
+        return null
     }
     let result = 1 ;
     for (let i = 1; i <=n ; i++) {
