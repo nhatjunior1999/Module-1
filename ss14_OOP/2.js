@@ -1,24 +1,14 @@
-let student = {
-    // key + value
-    // thuộc tính
-    fullName: "Trần Như Nhộng",
-    birthYear: 2005,
+let infor = {
+    fullName: "To Long Nhat",
+    birthYear: "1999",
+    numberPhone: "0975918087",
     address: {
-        city: "Hà Nội",
-        country: "Việt Nam",
+        city: "thanh hoa ",
+        country: "viet nam "
     },
-    scores: [8, 9, 10],
-    // phương thức
-    getAge: function () {
-        return 2024 - this.birthYear;
-    },
+    scores: [7, 8, 9, 10, 11, 12, 13111]
 
-    diemTrungBinh: function () {
-        // tính tổng điểm
-        sumScores = this.scores.reduce((a, b) => a + b, 0);
-        // Trả về dtb
-        return sumScores / 3;
-    },
+
 };
-console.log(student.scores[0])
-console.log(student)
+let input =  prompt(" hãy chọn các mục sau để lấy thông tin của bạn : (fullName , birthYear , numberPhone , address , scores)");
+console.log(infor[input])
