@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pet Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🐾 Pet Management System</h1>
+
+<!-- Form: Add Pet -->
+<section>
+    <h2>🐈Add New Pet</h2>
+    <form id="addPetForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="species">Species:</label>
+        <select id="species">
+            <option value="">--Select species</option>
+            <option value="">🐶 Dog</option>
+            <option value="">🐱 Cat</option>
+            <option value="">🐦 Bird</option>
+            <option value="">🐰 Rabbit</option>
+            <option value="">🐄 Cow</option>
+            <option value="">🐾other</option>
+        </select>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" min="0" required>
+
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" min="0" required>
+
+        <button type="submit">Add Pet</button>
+    </form>
+</section>
+
+<!-- Form: Add Vaccination -->
+<section>
+    <h2>🐕‍🦺 Add Vaccination</h2>
+    <form id="addVaccinationForm">
+        <label for="petIndex">Pet Index:</label>
+        <input type="number" id="petIndex" min="0" required>
+
+        <label for="vaccinationDate">Vaccination Date:</label>
+        <input type="date" id="vaccinationDate" required>
+
+        <button type="submit">Add Vaccination</button>
+    </form>
+</section>
+
+
+<section>
+    <h2>🐕 Pet List</h2>
+    <div id="petList">
+        >
+    </div>
+</section>
+
+<script src="main.js"></script>
+</body>
+</html>

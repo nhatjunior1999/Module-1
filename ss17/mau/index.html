@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <title>Pet Management System</title>
+
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🐾 Pet Management System</h1>
+    <p>Manage your pets and their vaccination records with ease</p>
+  </div>
+
+  <div class="main-content">
+    <!-- Add Pet Section -->
+    <div class="section">
+      <h2>➕ Add New Pet</h2>
+      <form id="petForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="petName">Pet Name</label>
+            <input type="text" id="petName" name="petName" required>
+          </div>
+          <div class="form-group">
+            <label for="petSpecies">Species</label>
+            <select id="petSpecies" name="petSpecies" required>
+              <option value="">Select Species</option>
+              <option value="dog">Dog</option>
+              <option value="cat">Cat</option>
+              <option value="bird">Bird</option>
+              <option value="rabbit">Rabbit</option>
+              <option value="hamster">Hamster</option>
+              <option value="fish">Fish</option>
+              <option value="reptile">Reptile</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="petAge">Age (years)</label>
+            <input type="number" id="petAge" name="petAge" min="0" step="0.1" required>
+          </div>
+          <div class="form-group">
+            <label for="petWeight">Weight (kg)</label>
+            <input type="number" id="petWeight" name="petWeight" min="0" step="0.1" required>
+          </div>
+        </div>
+        <button type="submit" class="btn">Add Pet</button>
+      </form>
+    </div>
+
+    <!-- Pet List Section -->
+    <div class="section">
+      <h2>🐕 Pet List & Vaccination Records</h2>
+      <div id="petList">
+        <div class="empty-state">
+          <div style="font-size: 48px; margin-bottom: 20px;">🐾</div>
+          <h3>No pets added yet</h3>
+          <p>Add your first pet using the form above!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Pet Modal -->
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>✏️ Edit Pet Information</h2>
+    <form id="editPetForm">
+      <input type="hidden" id="editPetId">
+      <div class="form-group">
+        <label for="editPetName">Pet Name</label>
+        <input type="text" id="editPetName" required>
+      </div>
+      <div class="form-group">
+        <label for="editPetSpecies">Species</label>
+        <select id="editPetSpecies" required>
+          <option value="dog">Dog</option>
+          <option value="cat">Cat</option>
+          <option value="bird">Bird</option>
+          <option value="rabbit">Rabbit</option>
+          <option value="hamster">Hamster</option>
+          <option value="fish">Fish</option>
+          <option value="reptile">Reptile</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="editPetAge">Age (years)</label>
+        <input type="number" id="editPetAge" min="0" step="0.1" required>
+      </div>
+      <div class="form-group">
+        <label for="editPetWeight">Weight (kg)</label>
+        <input type="number" id="editPetWeight" min="0" step="0.1" required>
+      </div>
+      <div class="button-group">
+        <button type="submit" class="btn">Update Pet</button>
+        <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Add Vaccination Modal -->
+<div id="vaccinationModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>💉 Add Vaccination Record</h2>
+    <form id="vaccinationForm">
+      <input type="hidden" id="vaccinationPetId">
+      <div class="form-group">
+        <label for="vaccinationType">Vaccination Type</label>
+        <input type="text" id="vaccinationType" placeholder="e.g., Rabies, DHPP, Feline Distemper" required>
+      </div>
+      <div class="form-group">
+        <label for="vaccinationDate">Date</label>
+        <input type="date" id="vaccinationDate" required>
+      </div>
+      <div class="form-group">
+        <label for="vaccinationNotes">Notes (optional)</label>
+        <textarea id="vaccinationNotes" rows="3" placeholder="Additional notes about the vaccination"></textarea>
+      </div>
+      <div class="button-group">
+        <button type="submit" class="btn">Add Vaccination</button>
+        <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="main.js">
+
+
+</script>
+</body>
+</html>
