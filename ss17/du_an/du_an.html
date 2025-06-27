@@ -2,64 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pet Management System</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Management System - OOP</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="container">
+    <h1>🐾 Pet Management System</h1>
 
-<h1>🐾 Pet Management System</h1>
-
-<!-- Form: Add Pet -->
-<section>
-    <h2>🐈Add New Pet</h2>
-    <form id="addPetForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" required>
-
-        <label for="species">Species:</label>
-        <select id="species">
-            <option value="">--Select species</option>
-            <option value="">🐶 Dog</option>
-            <option value="">🐱 Cat</option>
-            <option value="">🐦 Bird</option>
-            <option value="">🐰 Rabbit</option>
-            <option value="">🐄 Cow</option>
-            <option value="">🐾other</option>
-        </select>
-
-        <label for="age">Age:</label>
-        <input type="number" id="age" min="0" required>
-
-        <label for="weight">Weight (kg):</label>
-        <input type="number" id="weight" min="0" required>
-
-        <button type="submit">Add Pet</button>
-    </form>
-</section>
-
-<!-- Form: Add Vaccination -->
-<section>
-    <h2>🐕‍🦺 Add Vaccination</h2>
-    <form id="addVaccinationForm">
-        <label for="petIndex">Pet Index:</label>
-        <input type="number" id="petIndex" min="0" required>
-
-        <label for="vaccinationDate">Vaccination Date:</label>
-        <input type="date" id="vaccinationDate" required>
-
-        <button type="submit">Add Vaccination</button>
-    </form>
-</section>
-
-
-<section>
-    <h2>🐕 Pet List</h2>
-    <div id="petList">
-        >
+    <!-- Pet Form Section -->
+    <div class="section">
+        <h2>Add/Edit Pet 🐶</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="petName">Pet Name:</label>
+                <input type="text" id="petName" placeholder="Enter pet name">
+            </div>
+            <div class="form-group">
+                <label for="petSpecies">Species:</label>
+                <input type="text" id="petSpecies" placeholder="e.g., Dog, Cat, Bird">
+            </div>
+            <div class="form-group">
+                <label for="petAge">Age (years):</label>
+                <input type="number" id="petAge" min="0" step="0.1" placeholder="Enter age">
+            </div>
+            <div class="form-group">
+                <label for="petWeight">Weight (kg):</label>
+                <input type="number" id="petWeight" min="0" step="0.1" placeholder="Enter weight">
+            </div>
+        </div>
+        <button id="addPetBtn">Add New Pet</button>
     </div>
-</section>
 
+    <!-- Vaccine Section -->
+    <div class="section">
+        <h2>Add Vaccination</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="petSelect">Select Pet:</label>
+                <select id="petSelect">
+                    <option value="">Choose a pet...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="vaccineName">Vaccine Name:</label>
+                <input type="text" id="vaccineName" placeholder="e.g., Rabies, DHPP">
+            </div>
+            <div class="form-group">
+                <label for="vaccineDate">Date:</label>
+                <input type="date" id="vaccineDate">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="vaccineNote">Note (optional):</label>
+            <textarea id="vaccineNote" rows="3" placeholder="Additional notes about the vaccination"></textarea>
+        </div>
+        <button id="addVaccineBtn">Add Vaccination</button>
+    </div>
+
+    <!-- Pet List Section -->
+    <div class="section">
+        <h2>My Pets</h2>
+        <div id="petList">
+            <div class="no-pets">No pets added yet. Add your first pet above!</div>
+        </div>
+    </div>
+</div>
+
+<!-- Import JavaScript files -->
 <script src="main.js"></script>
+
 </body>
 </html>
