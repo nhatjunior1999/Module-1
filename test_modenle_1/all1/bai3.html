@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý Sổ Tiết Kiệm</title>
+</head>
+<body>
+<h2>Thêm sổ tiết kiệm</h2>
+
+<label>Mã sổ:</label><input id="maSo"><br>
+<label>Loại tiết kiệm: </label><input id="loaiTietKiem"><br>
+<label>Họ tên:</label><input id="hoTen"><br>
+<label>CMND:</label><input id="cmnd"><br>
+<label>Ngày mở sổ:</label><input id="ngayMo"><br>
+<label>Số tiền:</label><input id="soTien" type="number"><br><br>
+
+<button onclick="themSo()">Thêm</button>
+<button onclick="xoaSo()">Xóa</button>
+<button onclick="lamMoi()">Làm mới</button>
+
+<h2>Danh sách sổ tiết kiệm</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Mã sổ</th>
+        <th>Loại</th>
+        <th>Họ tên</th>
+        <th>CMND</th>
+        <th>Ngày mở</th>
+        <th>Số tiền</th>
+    </tr>
+    </thead>
+    <tbody id="bangHienThi"></tbody>
+</table>
+
+<script src="main.js">
+
+</script>
+</body>
+</html>

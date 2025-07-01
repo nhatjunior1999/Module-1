@@ -1,89 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pet Management</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="container">
-    <h1>🐾 Pet Management System</h1>
-    <div class="section_add-pet">
-        <h2>Add New Pet 🐦</h2> <br>
-        <label>
-            <span>Name:</span>
-            <input type="text" id="petName" placeholder="Enter name">
-        </label>
-        <br><br>
-        <label> <span>Species:</span>
-            <select id="petSpecies">
-                <option value="">--Select species--</option>
-                <option value="Dog">🐶 Dog</option>
-                <option value="Cat">🐱 Cat</option>
-                <option value="Bird">🐦 Bird</option>
-                <option value="Rabbit">🐰 Rabbit</option>
-                <option value="Cow">🐄 Cow</option>
-                <option value="Hamster">🐹 Hamster</option>
-                <option value="Fish">🐟 Fish</option>
-                <option value="Turtle">🐢 Turtle</option>
-                <option value="Horse">🐴 Horse</option>
-                <option value="Snake">🐍 Snake</option>
-                <option value="Frog">🐸 Frog</option>
-                <option value="Fox">🦊 Fox</option>
-                <option value="Parrot">🦜 Parrot</option>
-                <option value="Pig">🐷 Pig</option>
-                <option value="Chicken">🐔 Chicken</option>
-                <option value="Duck">🦆 Duck</option>
-                <option value="Goat">🐐 Goat</option>
-                <option value="Monkey">🐒 Monkey</option>
-                <option value="Other">🐾 Other</option>
-            </select>
-        </label>
-        <br> <br>
-        <label> <span> Age : </span>
-            <input type="number" id="petAge">
-        </label>
-        <br><br>
-        <label> <span> Weight(kg) : </span>
-            <input type="number" id="petWeight">
-        </label>
-        <br><br>
-        <button id="addPetBtn">Add New pet</button>
-        <br> <br>
-    </div>
-    <div class="section_add-vaccine">
-        <h2>Add Vaccination 💉</h2>
-        <br><br>
-        <label> <span>Select Pet:</span>
-            <select id="petSelect">
-                <!--                -->
-            </select>
-        </label>
-        <br> <br>
-        <label> <span> Vaccine Name : </span>
-            <input type="text" id="vaccineName" placeholder="Enter vaccine Name">
-        </label>
-        <br> <br>
-        <label> <span> Date :</span>
-            <input type="date" id="vaccineDate">
-        </label>
-        <br> <br>
-        <label> <span>Note :</span>
-            <input type="text" id="vaccineNote" placeholder="Note">
-        </label>
-        <br>
-        <button id="addVaccineBtn">Add Vaccine</button>
-        <br> <br>
+<h1>
+    <span class="emoji-move">🦓</span>
+    Pet Management System
+    <span class="emoji-move">🐱</span>
+</h1>
 
+<div class="container">
+    <!-- Bên trái: Hiển thị bảng thú cưng -->
+    <div class="left">
+        <h2>Pet List
+            <span class="emoji-jump">🐶</span>
+
+        </h2>
+        <table id="petTable">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Species</th>
+                <th>Age</th>
+                <th>Weight</th>
+                <th>Vaccines</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Danh sách thú cưng sẽ được thêm vào đây bằng JS -->
+            </tbody>
+        </table>
     </div>
-    <div class="section_pet-list">
-        <h2>Pet List</h2>
-        <div id="petList">
-            >
-        </div>
+
+    <!-- Bên phải: Form thêm thú cưng -->
+    <div class="right">
+        <h2>Add New Pet
+            <span class="emoji-jump">🦘</span>
+        </h2>
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="species" placeholder="Species">
+        <input type="number" id="age" placeholder="Age">
+        <input type="number" id="weight" placeholder="Weight (kg)">
+        <select id="vaccineName">
+            <option value="">-- Select Vaccine --</option>
+            <option value="Rabies">Rabies</option>
+            <option value="Parvo">Parvo</option>
+            <option value="Distemper">Distemper</option>
+        </select>
+        <input type="date" id="vaccineDate">
+        <button id="addPetBtn">Add Pet</button>
     </div>
 </div>
-<script src="main.js"></script>
 
+<script src="main.js"></script>
 </body>
 </html>

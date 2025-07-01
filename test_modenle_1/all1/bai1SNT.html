@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // Hàm kiểm tra một số có phải số nguyên tố không
+    function isPrime(n) {
+        if (n < 2) return false;
+        for (let i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i === 0) return false;
+        }
+        return true;
+    }
+
+    // Hàm chính
+    function main() {
+        let n;
+        do {
+            n = +prompt("Nhập số lượng phần tử (1-50):");
+        } while (!Number.isInteger(n) || n <= 0 || n > 50);
+
+        let arr = [];
+        for (let i = 0; i < n; i++) {
+            let x;
+            do {
+                x = +prompt(`Nhập phần tử thứ ${i + 1}:`);
+            } while (x < 0 || isNaN(x));
+            arr.push(x);
+        }
+
+        let primeNumbers = arr.filter(isPrime);
+        alert("Các số nguyên tố là: " + primeNumbers.join(", "));
+    }
+
+    main();
+
+
+
+
+</script>

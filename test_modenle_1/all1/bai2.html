@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>BÀI 2 – SO SÁNH 2 PHÂN SỐ
+    🔍 Yêu cầu đề bài:
+    Nhập 2 phân số theo định dạng: a/b (ví dụ: 2/3)
+
+    Kiểm tra xem 2 phân số có bằng nhau không, bằng cách so sánh a*d == b*c
+
+    s</p>
+</body>
+</html>
+<script>
+    // So sánh phân số a/b và c/d
+    function soSanhPhanSo(a, b, c, d) {
+        if (a * d === b * c) {
+            return "Hai phân số bằng nhau";
+        } else {
+            return "Hai phân số không bằng nhau";
+        }
+    }
+
+    // Nhập phân số hợp lệ từ người dùng
+    function nhapPhanSo(thuTu) {
+        let tu, mau;
+        while (true) {
+            let nhap = prompt(`Nhập phân số thứ ${thuTu} (ví dụ: 3/4):`);
+            let tach = nhap.split("/");
+
+            if (tach.length === 2) {
+                tu = Number(tach[0]);
+                mau = Number(tach[1]);
+
+                if (Number.isInteger(tu) && Number.isInteger(mau) && mau !== 0) {
+                    return [tu, mau];
+                }
+            }
+
+            alert("Phân số không hợp lệ, vui lòng nhập lại.");
+        }
+    }
+
+    // Hàm chính
+    function main() {
+        let [a, b] = nhapPhanSo(1);
+        let [c, d] = nhapPhanSo(2);
+
+        alert(soSanhPhanSo(a, b, c, d));
+    }
+
+    main();
+
+</script>

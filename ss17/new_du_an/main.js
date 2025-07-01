@@ -1,106 +1,151 @@
-// petManager.js
+class Pet {
+    constructor(name, species, age, weight) {
+        this.id = Date.now() + Math.random();
+        this.name = name;
+        this.species = species;
+        this.weight = weight;
+        this.age = age;
+        this.vaccines = [];
+    }
 
-// Lớp quản lý danh sách thú cưng
+    addVaccine(vaccine) {
+        this.vaccines.push(vaccine);
+    }
+
+    updateInfo(newName, newAge, newSpecies, newWeight) {
+        this.name = newName;
+        this.age = newAge;
+        this.species = newSpecies;
+        this.weight = newWeight;
+    }
+}
+
 class PetManager {
     constructor() {
-        this.pets = []; // Mảng lưu các đối tượng Pet
-        this.petId = 1; // ID tự tăng
-        this.petListDiv = document.getElementById("petList");
-        this.petSelect = document.getElementById("petSelect");
-        this.initEvents();
+        this.pets = [];
     }
 
-    // Khởi tạo sự kiện
-    initEvents() {
-        document.getElementById("addPetBtn").addEventListener("click", () => this.addPet());
-        document.getElementById("addVaccineBtn").addEventListener("click", () => this.addVaccine());
+    addPet(pet) {
+        this.pets.push(pet);
     }
 
-    // Thêm thú cưng mới
-    addPet() {
-        const name = document.getElementById("petName").value.trim();
-        const species = document.getElementById("petSpecies").value.trim();
-        const age = parseFloat(document.getElementById("petAge").value);
-        const weight = parseFloat(document.getElementById("petWeight").value);
-
-        if (!name || !species || isNaN(age) || isNaN(weight)) {
-            alert("Please fill in all pet details correctly.");
-            return;
+    deletePet(id) {
+        for (let i = 0; i < this.pets.length; i++) {
+            if (this.pets[i].id === id) {
+                this.pets.splice(i, 1);
+                break;
+            }
         }
-
-        const newPet = new Pet(this.petId++, name, species, age, weight);
-        this.pets.push(newPet);
-
-        this.renderPets();
-        this.updatePetSelect();
-        this.clearPetForm();
     }
 
-    // Hiển thị danh sách thú cưng
-    renderPets() {
-        this.petListDiv.innerHTML = "";
-
-        if (this.pets.length === 0) {
-            this.petListDiv.innerHTML = '<div class="no-pets">No pets added yet.</div>';
-            return;
+    updatePet(id, newInfo) {
+        for (let i = 0; i < this.pets.length; i++) {
+            if (this.pets[i].id === id) {
+                this.pets[i].updateInfo(
+                    newInfo.name,
+                    newInfo.age,
+                    newInfo.species,
+                    newInfo.weight
+                );
+                break;
+            }
         }
+    }
 
-        this.pets.forEach(pet => {
-            const div = document.createElement("div");
-            div.className = "pet-item";
-            div.innerHTML = `
-                <h3>${pet.name}</h3>
-                ${pet.getPetInfoHTML()}
-                <div class="vaccine-list">
-                    <h4>Vaccinations:</h4>
-                    ${pet.getVaccinesHTML()}
-                </div>
-            `;
-            this.petListDiv.appendChild(div);
+    getAllPets() {
+        return this.pets;
+    }
+}
+
+let manager = new PetManager();
+let editingPetId = null;
+
+document.getElementById("addPetBtn").addEventListener("click", () => {
+    let name = document.getElementById("name").value;
+    let species = document.getElementById("species").value;
+    let age = parseInt(document.getElementById("age").value);
+    let weight = parseFloat(document.getElementById("weight").value);
+
+    let vaccineName = document.getElementById("vaccineName").value;
+    let vaccineDate = document.getElementById("vaccineDate").value;
+    if (editingPetId !== null) {
+
+        manager.updatePet(editingPetId, {
+            name: name,
+            age: age,
+            species: species,
+            weight: weight
         });
-    }
 
-    // Cập nhật danh sách chọn thú trong phần tiêm vaccine
-    updatePetSelect() {
-        this.petSelect.innerHTML = '<option value="">Choose a pet...</option>';
-        this.pets.forEach(pet => {
-            const option = document.createElement("option");
-            option.value = pet.id;
-            option.textContent = pet.name;
-            this.petSelect.appendChild(option);
-        });
-    }
 
-    // Thêm vaccine vào thú được chọn
-    addVaccine() {
-        const petId = parseInt(this.petSelect.value);
-        const name = document.getElementById("vaccineName").value.trim();
-        const date = document.getElementById("vaccineDate").value;
-        const note = document.getElementById("vaccineNote").value.trim();
+        editingPetId = null;
+        document.getElementById("addPetBtn").textContent = "Add Pet";
+    } else {
 
-        if (!petId || !name || !date) {
-            alert("Please select a pet and fill in vaccine name and date.");
-            return;
+        const newPet = new Pet(name, species, age, weight);
+
+
+        if (vaccineName && vaccineDate) {
+            const vaccine = {
+                name: vaccineName,
+                date: vaccineDate
+            };
+            newPet.addVaccine(vaccine);
         }
 
-        const pet = this.pets.find(p => p.id === petId);
-        if (!pet) return;
 
-        pet.addVaccine({ name, date, note });
-        this.renderPets();
-        this.clearVaccineForm();
+        manager.addPet(newPet);
     }
 
-    clearPetForm() {
-        document.getElementById("petName").value = "";
-        document.getElementById("petSpecies").value = "";
-        document.getElementById("petAge").value = "";
-        document.getElementById("petWeight").value = "";
-    }
 
-    clearVaccineForm() {
-        document.getElementById("vaccineName").value = "";
-        document.getElementById("vaccineDate").value = "";
-        document.getElementById("vaccineNote").value = "";
+    displayPets();
+
+    document.getElementById("name").value = "";
+    document.getElementById("species").value = "";
+    document.getElementById("age").value = "";
+    document.getElementById("weight").value = "";
+    document.getElementById("vaccineName").value = "";
+    document.getElementById("vaccineDate").value = "";
+});
+
+function displayPets() {
+    const tbody = document.querySelector("#petTable tbody");
+    tbody.innerHTML = "";
+
+    manager.getAllPets().forEach(pet => {
+        const tr = document.createElement("tr");
+        const vaccinesHTML = pet.vaccines.map(v => `${v.name} (${v.date})`).join("<br>") || "<i>No vaccine</i>";
+
+        tr.innerHTML = `
+          <td>${pet.name}</td>
+          <td>${pet.species}</td>
+          <td>${pet.age}</td>
+          <td>${pet.weight}</td>
+          <td>${vaccinesHTML}</td>
+          <td>
+            <button onclick="editPet(${pet.id})">edit</button>
+            <button onclick="deletePet(${pet.id})">delete</button>
+          </td>
+        `;
+
+        tbody.appendChild(tr);
+    });
+}
+
+function deletePet(id) {
+    manager.deletePet(id);
+    displayPets();
+}
+
+function editPet(id) {
+    const pet = manager.getAllPets().find(p => p.id === id);
+    if (pet) {
+        document.getElementById("name").value = pet.name;
+        document.getElementById("species").value = pet.species;
+        document.getElementById("age").value = pet.age;
+        document.getElementById("weight").value = pet.weight;
+
+        editingPetId = id;
+        document.getElementById("addPetBtn").textContent = "Update Pet";
     }
 }
