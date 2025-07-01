@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="soThe" placeholder="so the"> <br>
+<input id="chuThe" placeholder="chu the"> <br>
+<input id="cmnd" placeholder="can cuoc cong dan"> <br>
+<input id="ngayMo" placeholder="ngay mo"> <br>
+<input id="soDu" placeholder="so du"> <br><br>
+<button style="margin-left: 20px " onclick="themThe()"> them the</button>
+<button onclick="xoaThe()">xoa the</button>
+<br> <br>
+<div id="bang"></div>
+
+</body>
+</html>
+<script>
+    class theNganHang {
+        constructor(soThe, chuThe, cmnd, ngayMo, soDu) {
+            this.soThe = soThe;
+            this.chuThe = chuThe;
+            this.cmnd = cmnd;
+            this.ngayMo = ngayMo;
+            this.soDu = soDu;
+        }
+    }
+
+    let danhsach = []
+
+    function themThe() {
+        let sothe = document.getElementById("soThe").value.trim()
+        let chuThe = document.getElementById("chuThe").value.trim()
+        let cmnd = document.getElementById("cmnd").value.trim()
+        let ngaymo = document.getElementById("ngayMo").value.trim()
+        let soDu = +document.getElementById("soDu").value
+        if (!sothe || sothe.length > 12 || isNaN(soDu) || !ngaymo || !chuThe || soDu < 0 || (cmnd.length !== 9 && cmnd !== 12)) {
+            alert("vui long nhap lai du lieu khong hop le")
+            return;
+        }
+        let theMoi = new theNganHang(sothe, chuThe, cmnd, ngaymo, soDu);
+        danhsach.push(theMoi)
+        hienthi();
+    }
+
+    function xoaThe() {
+        let soThe = prompt("nhap so the can xoa")
+        danhsach = danhsach.filter(the => the.soThe !== soThe);
+        hienthi();
+    }
+
+    function hienthi() {
+        html = `<table border="1"> <tr><th>so the</th> <th>chu The</th> <th>cmnd</th> <th>ngay mo</th> <th>so du</th></tr>`
+        for (let the of danhsach) {
+            html += `<tr>
+            <td>${the.soThe}</td>
+            <td>${the.chuThe}</td>
+            <td>${the.cmnd}</td>
+            <td>${the.ngayMo}</td>
+             <td>${the.soDu}</td>
+
+               </tr>`
+        }
+        html += `</table>`
+        document.getElementById("bang").innerHTML = html
+
+    }
+
+    hienthi()
+
+</script>
