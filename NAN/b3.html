@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý Sổ Tiết Kiệm</title>
+</head>
+<body>
+<h2>Thêm Sổ Tiết Kiệm</h2>
+
+<input id="maSo" placeholder="Mã sổ"><br>
+<input id="loai" placeholder="Loại tiết kiệm"><br>
+<input id="hoTen" placeholder="Họ tên"><br>
+<input id="cmnd" placeholder="CMND"><br>
+<input id="ngayMo" placeholder="Ngày mở sổ"><br>
+<input id="soTien" placeholder="Số tiền" type="number"><br>
+
+<button onclick="themSo()">Thêm</button>
+<button onclick="xoaSo()">Xóa</button>
+
+<h2>Danh Sách Sổ Tiết Kiệm</h2>
+<div id="bangHienThi"></div>
+
+<script >
+    // Định nghĩa đối tượng Sổ tiết kiệm
+    function TaoSo(maSo, loai, hoTen, cmnd, ngayMo, soTien) {
+        return { maSo, loai, hoTen, cmnd, ngayMo, soTien };
+    }
+
+    // Danh sách các sổ tiết kiệm
+    let danhSach = [
+        TaoSo('12345', 'Ngắn hạn', 'Nguyễn Văn A', '12345678', '2022-01-01', 1000000),
+        TaoSo('23456', 'Dài hạn', 'Nguyễn Văn B', '87654321', '2022-02-01', 2000000)
+    ];
+
+    // Hiển thị danh sách sổ tiết kiệm
+    function hienThiDanhSach() {
+        let html = "<table border='1'><tr><th>Mã</th><th>Loại</th><th>Họ tên</th><th>CMND</th><th>Ngày mở</th><th>Số tiền</th></tr>";
+
+        for (let so of danhSach) {
+            html += `<tr>
+      <td>${so.maSo}</td>
+      <td>${so.loai}</td>
+      <td>${so.hoTen}</td>
+      <td>${so.cmnd}</td>
+      <td>${so.ngayMo}</td>
+      <td>${so.soTien}</td>
+    </tr>`;
+        }
+
+        html += "</table>";
+        document.getElementById("bangHienThi").innerHTML = html;
+    }
+
+    // Hàm thêm sổ mới
+    function themSo() {
+        let maSo = document.getElementById("maSo").value.trim();
+        let loai = document.getElementById("loai").value.trim();
+        let hoTen = document.getElementById("hoTen").value.trim();
+        let cmnd = document.getElementById("cmnd").value.trim();
+        let ngayMo = document.getElementById("ngayMo").value.trim();
+        let soTien = Number(document.getElementById("soTien").value.trim());
+
+
+        if (!maSo || !loai || !hoTen || !cmnd || !ngayMo || soTien <= 0) {
+            alert("Vui lòng nhập đầy đủ và đúng thông tin!");
+            return;
+        }
+
+        // Thêm vào danh sách
+        let soMoi = TaoSo(maSo, loai, hoTen, cmnd, ngayMo, soTien);
+        danhSach.push(soMoi);
+        hienThiDanhSach();
+    }
+
+    // Hàm xóa sổ theo mã
+    function xoaSo() {
+        let maSoXoa = prompt("Nhập mã số cần xóa:");
+        let viTri = danhSach.findIndex(so => so.maSo === maSoXoa);
+
+        if (viTri === -1) {
+            alert("Không tìm thấy mã sổ.");
+            return;
+        }
+
+        danhSach.splice(viTri, 1);
+        hienThiDanhSach();
+    }
+
+    // Gọi khi trang mới tải
+    hienThiDanhSach();
+
+</script>
+</body>
+</html>
