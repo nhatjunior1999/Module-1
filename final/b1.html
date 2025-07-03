@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    let n;
+    do {
+        n = prompt("mời nhập vào số nguyen duong n <= 50")
+
+    } while (isNaN(n) || n <= 0 || n > 50 || n % 1 !== 0)
+
+    let arr = [];
+    let sum = 0;
+    let count = 0;
+    for (let i = 0; i < n; i++) {
+        so = +prompt(`nhập phần tử thu ${i + 1}`)
+        arr.push(so)
+        if (arr[i] % 3 ===0){
+           sum += arr[i];
+            count++
+        }
+
+    }
+    let tbc =  sum/count;
+    console.log(tbc)
+
+
+
+</script>

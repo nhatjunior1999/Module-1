@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>quan li cong nhan</title>
+</head>
+<body>
+<h2> quan li cong nhan </h2>
+<input id="stt" placeholder="stt"> <br>
+<input id="hoVaTen" placeholder="Ho va ten"> <br>
+<input id="ngaySinh" placeholder="ngay sinh "><br>
+<input id="diaChi" placeholder="dia chi"><br>
+<input id="luong" placeholder="luong"> <br>
+<input id="chucVu" placeholder="chuc vu"> <br><br>
+<button onclick="themThe()">them</button>
+<button onclick="xoaThe()">xoa</button>
+<br> <br>
+<div id="bang"></div>
+</body>
+</html>
+<script>
+    class congNhan {
+        constructor(stt, hoVaTen, ngaySinh, diaChi, luong, chucVu) {
+            this.stt = stt;
+            this.hoVaTen = hoVaTen;
+            this.ngaySinh = ngaySinh;
+            this.diaChi = diaChi;
+            this.luong = luong;
+            this.chucVu = chucVu;
+        }
+    }
+
+    let danhsach = [
+        congnhan1 = new congNhan(1, " Trương Tấn A", 11 - 11 - 1997, "Quảng Nam", 2000, "abc"),
+        congnhan2 = new congNhan(2, " Trương Tấn B", 11 - 11 - 1998, "Đà Nẵng ", 2000, "abc"),
+        congnhan3 = new congNhan(3, " Trương Tấn C", 11 - 11 - 1999, "Huế", 2000, "abc")
+
+    ]
+
+    function themThe() {
+        let stt = +document.getElementById("stt").value
+        let hoVaten = document.getElementById("hoVaTen").value.trim()
+        let ngaySinh = document.getElementById("ngaySinh").value
+        let diaChi = document.getElementById("diaChi").value.trim()
+        let luong = +document.getElementById("luong").value
+        let chucvu = document.getElementById("chucVu").value.trim()
+        if ((isNaN(luong) && luong < 0) || !hoVaten || !diaChi || !chucvu || isNaN(stt) || isNaN(ngaySinh)) {
+            alert(" vui long nhap lai thong tin ")
+            return
+        }
+        let danhSachMoi = new congNhan(stt, hoVaten, ngaySinh, diaChi, luong, chucvu)
+        danhsach.push(danhSachMoi)
+        hienthi()
+    }
+
+    function xoaThe() {
+        let stt = alert("moi ban nhap so stt can xoa ");
+        danhsach = danhsach.filter(stt => stt.stt !== stt)
+        hienthi()
+    }
+
+    function hienthi() {
+        html = `<table border="1" > <tr><th>stt</th><th>ho va ten</th><th>ngay sinh</th><th>dia chi</th><th>luong</th><th>chuc vu</th></tr>`
+        for (let the of danhsach) {
+            html += `<tr>
+            <td>${the.stt}</td>
+            <td>${the.hoVaTen}</td>
+            <td>${the.ngaySinh}</td>
+            <td>${the.diaChi}</td>
+            <td>${the.luong}</td>
+            <td>${the.chucVu}</td>
+              </tr>
+`
+        }
+        html += `</table>`
+        document.getElementById("bang").innerHTML = html
+
+    }
+
+    hienthi()
+</script>
