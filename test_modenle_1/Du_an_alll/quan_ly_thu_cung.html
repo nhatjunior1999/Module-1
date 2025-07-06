@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pet Manager</title>
+    <link rel="stylesheet" href="quan_ly_thu_cung.css">
+</head>
+<body>
+<div class="container">
+    <h1>🐾 Pet Management System</h1>
+
+    <div class="form">
+        <div class="form-row">
+            <input type="text" id="petName" placeholder="Pet Name">
+            <input type="text" id="petSpecies" placeholder="Species">
+            <input type="number" id="petAge" placeholder="Age">
+            <input type="number" id="petWeight" placeholder="Weight (kg)">
+        </div>
+
+        <div class="form-row">
+            <select id="petVaccine">
+                <option value="">Vaccination Status</option>
+                <option value="Yes">Vaccinated</option>
+                <option value="No">Not Vaccinated</option>
+            </select>
+            <input type="text" id="vaccineName" placeholder="Vaccine Name">
+            <input type="date" id="vaccineDate">
+        </div>
+
+        <div class="form-row">
+            <textarea id="vaccineNote" placeholder="Notes about vaccination..."></textarea>
+        </div>
+
+        <div class="form-row">
+            <button  onclick="addPet()">Add Pet</button>
+
+
+        </div>
+    </div>
+
+    <div class="display" id="petList">
+        <p>No pets added yet!</p>
+    </div>
+</div>
+
+<script src="quan_ly_thu_cung.js"></script>
+</body>
+</html>
